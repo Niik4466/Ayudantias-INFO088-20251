@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 #define N 30
 
 int main(){
@@ -11,7 +8,7 @@ int main(){
   // Creacion de arreglo dinamico
   int* dinamico = new int[20];
 
-  // Cual es la utilidad del arreglo Estatico?
+  // Cual es la utilidad del arreglo Estatico?Construcción de la Estructura + Experimentos
   //  Es mas veloz acceder a elementos del arreglo, dado que obtiene memoria desde el stack de memoria
 
   // Cual es la utilidad del arreglo Dinamico?
