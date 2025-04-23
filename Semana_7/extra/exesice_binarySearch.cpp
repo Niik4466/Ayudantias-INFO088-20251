@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 
 	int x = rand()%MAX;
 
-	//Aqui se debe ordenar el arreglo
+	//En esta linea deben implementar el algoritmo de ordenamiento
 	int answer = matrixBinarySearch(matrix, x);
 	if(answer == -1)
 		printf("El numero %d no fue encontrado\n", x);
@@ -42,8 +42,9 @@ int matrixBinarySearch(std::vector<std::vector<int>> &matrix, int x) {
 }
 
 void imprimeMatriz(std::vector<std::vector<int>> &matrix) {
-	for(int i=0; i<matrix.size(); ++i) {
-		for(int j=0; j<matrix[i].size(); ++j) {
+	int n = static_cast<int>(matrix.size());
+	for(int i=0; i<n; ++i) {
+		for(int j=0; j<n; ++j) {
 			printf("%d ", matrix[i][j]);
 		}
 		printf("\n");
