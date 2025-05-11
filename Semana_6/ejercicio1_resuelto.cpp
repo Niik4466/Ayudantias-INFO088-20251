@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-using namespace std;
 
 #define N 20
 #define MAX 100
@@ -55,17 +54,17 @@ int partition(int *A, int l, int r){
     // Utilizamos la funcion mediana dada
     mediana(A, l, r);
     // Esto deja nuestra mediana justo en medio, ahora la dejamos en la primera posicion
-    swap(A[(l+r)/2], A[r]);
+    std::swap(A[(l+r)/2], A[r]);
     // Seguimos aplicando partitiony
 	int p = l;
 	int pv = A[p];
 	for (int i=l+1; i<=r; i++){
 		if (A[i] <= pv){
 			p++;
-			swap(A[i], A[p]);
+			std::swap(A[i], A[p]);
 		}
 	}
-	swap(A[l], A[p]);
+	std::swap(A[l], A[p]);
 	
 	return p;
 }

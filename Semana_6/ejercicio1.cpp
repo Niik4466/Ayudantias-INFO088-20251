@@ -9,7 +9,6 @@
 
 #include <iostream>
 #include <cstdlib>
-using namespace std;
 
 void quickSort(int *A, int l, int r);
 int partition(int *A, int l, int r);
@@ -50,10 +49,10 @@ int partition(int *A, int l, int r){
 	for (int i=l+1; i<=r; i++){
 		if (A[i] <= pv){
 			p++;
-			swap(A[i], A[p]);
+	    std::swap(A[i], A[p]);
 		}
 	}
-	swap(A[l], A[p]);
+    std::swap(A[l], A[p]);
 	
 	return p;
 }

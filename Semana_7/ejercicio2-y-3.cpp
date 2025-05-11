@@ -10,8 +10,6 @@ ahora debe unirlas en una nueva lista manteniendo el orden original en la funcio
 
 #include <random>
 
-using namespace std;
-
 struct nodeList {
 	int val;
 	nodeList* next;

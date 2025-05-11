@@ -1,7 +1,5 @@
 #include <random>
 
-using namespace std;
-
 struct nodeList {
 	int val;
 	nodeList* next;

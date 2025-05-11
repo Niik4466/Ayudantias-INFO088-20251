@@ -24,7 +24,6 @@ struct nodeList {
 typedef struct nodeList nodo;
 
 #include <random>
-using namespace std;
 
 void appendToList(nodo **l, int num);
 void imprimeLista(nodo *l);

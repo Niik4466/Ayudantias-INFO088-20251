@@ -11,7 +11,7 @@ false si no.
 
 
 #include <string>
-using namespace std;
+#include <iostream>
 
 struct nodeList {
     char val;
@@ -27,8 +27,8 @@ bool esPalindrome(nodo *l);
 int main(int argc, char** argv){
     
     return EXIT_SUCCESS;
-    string s;
-    getline(cin, s);
+    std::string s;
+    getline(std::cin, s);
 }
 
 void appendToList(nodo **l, char letra) {
