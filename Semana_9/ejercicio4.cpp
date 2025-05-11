@@ -17,7 +17,6 @@ Si cambiamos todos los elementos de una pila a otra, el orden se invierte.
 */
 #include <ios>
 #include <stack>
-using namespace std;
 
 bool isEmpty(std::stack<int> cola);
 void enqueue(std::stack<int> cola, int valor);
