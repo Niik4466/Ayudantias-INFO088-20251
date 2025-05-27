@@ -1,6 +1,5 @@
 #include <cstdlib>
 #include <random>
-using namespace std;
 
 #define MAX 101 // Valor máximo posible para el random
 #define MIN 10 // Valor mínimo posible para el random

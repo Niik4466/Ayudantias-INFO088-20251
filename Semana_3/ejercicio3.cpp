@@ -47,29 +47,28 @@ Desafío: ordenar el Vector y verificar que tan alejada estaba la mediana encont
 #include <iostream>
 #include <random>
 #include <vector>
-using namespace std;
 
 #define MIN 10  //Valor minimo de los números aleatorios
 #define MAX 101 //Valor máximo de los números aleatorios
 
-void imprimeArray(vector<int> &Vec, int n);
-void intercambiar(vector<int> &Vec, int a, int b);
-int mediana(vector<int> A, int n);
+void imprimeArray(std::vector<int> &Vec, int n);
+void intercambiar(std::vector<int> &Vec, int a, int b);
+int mediana(std::vector<int> A, int n);
 
 int main(){
 
   return 0;
 }
 
-void imprimeArray(vector<int> &Vec, int n){
+void imprimeArray(std::vector<int> &Vec, int n){
   return;
 }
 
-void intercambiar(vector<int> &Vec, int a, int b){
+void intercambiar(std::vector<int> &Vec, int a, int b){
   return;
 }
 
-int mediana(vector<int> &A, int n){
+int mediana(std::vector<int> &A, int n){
   return -1;
 }
 

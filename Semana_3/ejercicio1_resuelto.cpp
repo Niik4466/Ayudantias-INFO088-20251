@@ -3,7 +3,7 @@
 int main(){
 
   // Creacion de arreglo estatico
-  int estatico[20] = {0}
+  int estatico[20] = {0};
  
   // Creacion de arreglo dinamico
   int* dinamico = new int[20];

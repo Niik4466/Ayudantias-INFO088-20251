@@ -1,12 +1,11 @@
 #include <vector>
 #include <random>
-using namespace std;
 
-int quickSelect(vector<int> &A, int l, int r, const int k);
-int partition(vector<int> &A, int l, int r);
-int median_aprox(vector<int> &A, const int l, int r);
-void print_vec(vector<int> &A);
-void quickSort(vector<int> &A, const int l, const int r);
+int quickSelect(std::vector<int> &A, int l, int r, const int k);
+int partition(std::vector<int> &A, int l, int r);
+int median_aprox(std::vector<int> &A, const int l, int r);
+void print_vec(std::vector<int> &A);
+void quickSort(std::vector<int> &A, const int l, const int r);
 
 #define MIN 0
 #define MAX 100
@@ -23,12 +22,12 @@ int main(int argc, char **argv){
         exit(EXIT_FAILURE);
     } 
 
-    vector<int> A(n);
-    //llenamos el vector utilizando iteradores (ver más aquí -> https://learn.microsoft.com/es-es/cpp/standard-library/iterators?view=msvc-170)
+    std::vector<int> A(n);
+    //llenamos el std::vector utilizando iteradores (ver más aquí -> https://learn.microsoft.com/es-es/cpp/standard-library/iterators?view=msvc-170)
     for (int &iterador: A)
         iterador = MIN + rand()%(MAX-MIN);
 
-    printf("El vector es:\n");
+    printf("El std::vector es:\n");
     print_vec(A);
     
     printf("\nEl %d elemento menor es: %d\n", k, quickSelect(A, 0, n-1, k-1));
@@ -41,7 +40,7 @@ int main(int argc, char **argv){
     return EXIT_SUCCESS;
 }
 
-int quickSelect(vector<int> &A, int l, const int r, const int k) {
+int quickSelect(std::vector<int> &A, int l, const int r, const int k) {
     //partition deja el 'p' elemento menor en su lugar en la lista
     int p = partition(A, l, r);
     
@@ -58,21 +57,21 @@ int quickSelect(vector<int> &A, int l, const int r, const int k) {
 }
 
 //partition, median_aproxy quickSort son adaptaciones de los usados en el anterior ejercicio
-int partition(vector<int> &A, const int l ,const int r) {
+int partition(std::vector<int> &A, const int l ,const int r) {
     const int pivot = median_aprox(A, l, r);
     int rp= r+1;
 
     for(int j=r;j>l;--j){
         if(A.at(j) > pivot){
             --rp;
-            swap(A.at(rp), A.at(j));
+            std::swap(A.at(rp), A.at(j));
         }
     }
-    swap(A.at(rp-1), A.at(l));
+    std::swap(A.at(rp-1), A.at(l));
     return rp-1;
 }
 
-int median_aprox(vector<int> &A, const int l, int r) {
+int median_aprox(std::vector<int> &A, const int l, int r) {
     int m = l + (r-l)/2;
     int tmp;
 
@@ -92,14 +91,14 @@ int median_aprox(vector<int> &A, const int l, int r) {
     return A.at(l);
 }
 
-//recorremos el vector con un iterador y imprimimos cada elemento
-void print_vec(vector<int> &A) {
+//recorremos el std::vector con un iterador y imprimimos cada elemento
+void print_vec(std::vector<int> &A) {
     for (int num: A)
         printf("%d ", num);
     printf("\n");
 }
 
-void quickSort(vector<int> &A, const int l, const int r) {
+void quickSort(std::vector<int> &A, const int l, const int r) {
     if(l>=r)
         return;
     

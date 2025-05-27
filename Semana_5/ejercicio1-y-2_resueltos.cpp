@@ -2,7 +2,6 @@
 #include <random>
 #include <vector>
 #include <array>
-using namespace std;
 
 #define N_CAR 3
 #define N_NOM 5
@@ -10,9 +9,9 @@ using namespace std;
 #define MIN_EDAD 17
 #define MAX_EDAD 49
 
-const array<char[10], N_NOM>  ellos = {"Pedro", "Juan", "Manuel", "Diego", "Agustin"};
-const array<char[10], N_NOM> ellas = {"Maria", "Claudia", "Josefina", "Paola", "Linda"};
-const array<char[10], N_APEL> apel = {"Torres", "Flores", "Campos", "Acosta", "Aguirre", "Molina", "Silva", "Rojas", "Rios", "Castillo"};
+const std::array<char[10], N_NOM>  ellos = {"Pedro", "Juan", "Manuel", "Diego", "Agustin"};
+const std::array<char[10], N_NOM> ellas = {"Maria", "Claudia", "Josefina", "Paola", "Linda"};
+const std::array<char[10], N_APEL> apel = {"Torres", "Flores", "Campos", "Acosta", "Aguirre", "Molina", "Silva", "Rojas", "Rios", "Castillo"};
 
 struct {
    char id;
@@ -28,14 +27,14 @@ struct Alum{
 	int edad;		// IN [MIN_EDAD..MAX_EDAD]
 };
 
-void genAlumnos(vector<Alum> &Alumnos);
-void print_alumnos(vector<Alum> &Alumnos);
-void quickSortId(vector<Alum> &Alumnos, const int l, const int r);
-int partitionId(vector<Alum> &Alumnos, const int l ,const int r);
-int median_aprox(vector<Alum> &Alumnos, const int l, int r);
-int binarySearchId(vector<Alum> &Alumnos, const int x);
-void insertionSortNombre(vector<Alum> &Alumnos);
-int binarySearchNombre(vector<Alum> &Alumnos, const string s);
+void genAlumnos(std::vector<Alum> &Alumnos);
+void print_alumnos(std::vector<Alum> &Alumnos);
+void quickSortId(std::vector<Alum> &Alumnos, const int l, const int r);
+int partitionId(std::vector<Alum> &Alumnos, const int l ,const int r);
+int median_aprox(std::vector<Alum> &Alumnos, const int l, int r);
+int binarySearchId(std::vector<Alum> &Alumnos, const int x);
+void insertionSortNombre(std::vector<Alum> &Alumnos);
+int binarySearchNombre(std::vector<Alum> &Alumnos, const std::string s);
 
 // A esta definición del main(), se le pueden pasar argumentos
 int main(int argc, char **argv) {
@@ -45,7 +44,7 @@ int main(int argc, char **argv) {
 	}
 
     const int n = atoi(argv[1]);
-	vector<Alum> Alumnos(n);	// ESTO ES MEMORIA DINAMICA --> no sabe el compilador cuantos bytes son
+	std::vector<Alum> Alumnos(n);	// ESTO ES MEMORIA DINAMICA --> no sabe el compilador cuantos bytes son
 
 	genAlumnos(Alumnos);
     printf("Arreglo inicial:\n");
@@ -69,13 +68,13 @@ int main(int argc, char **argv) {
     printf("arreglo ordenado!, imprimiendo arreglo:\n");
     print_alumnos(Alumnos);
 
-    string s;
+    std::string s;
     if(rand()%2 == 0){
-			s = string(ellas.at(rand()%8));
+			s = std::string(ellas.at(rand()%8));
 			s += " ";
 			s += ellas.at(rand()%8);
 	}else{
-			s = string(ellos.at(rand()%8));
+			s = std::string(ellos.at(rand()%8));
 			s += " ";
 			s += ellos.at(rand()%8);
 	}
@@ -91,7 +90,7 @@ int main(int argc, char **argv) {
 }
 
 // generar n alumnos con dos nombres y 2 apellidos aleatorios desde los arreglos globales
-void genAlumnos(vector<Alum> &Alumnos) {
+void genAlumnos(std::vector<Alum> &Alumnos) {
 	int i, a, b;
 
 	for(i=0; i < (int)Alumnos.size(); ++i){
@@ -123,7 +122,7 @@ void genAlumnos(vector<Alum> &Alumnos) {
 	}
 }
 
-void print_alumnos(vector<Alum> &Alumnos) {
+void print_alumnos(std::vector<Alum> &Alumnos) {
 	for (Alum &alumno : Alumnos){
 		printf("Id        : %d\n", alumno.id);
 
@@ -153,7 +152,7 @@ void print_alumnos(vector<Alum> &Alumnos) {
 	}
 }
 
-void quickSortId(vector<Alum> &Alumnos, const int l, const int r) {
+void quickSortId(std::vector<Alum> &Alumnos, const int l, const int r) {
     if(l>=r)
         return;
     
@@ -162,7 +161,7 @@ void quickSortId(vector<Alum> &Alumnos, const int l, const int r) {
     quickSortId(Alumnos, l, p-1);
 }
 
-int partitionId(vector<Alum> &Alumnos, const int l ,const int r) {
+int partitionId(std::vector<Alum> &Alumnos, const int l ,const int r) {
     const int pivot = median_aprox(Alumnos, l, r);
     //toma la posiccion a la derecha del pivote
     //que inicia en el mayor indice del intervalo
@@ -173,16 +172,16 @@ int partitionId(vector<Alum> &Alumnos, const int l ,const int r) {
         // (pues ahora hay un elemento mas que queda a la derecha del pivote)
         if(Alumnos.at(j).id > pivot){
             --rp;
-            swap(Alumnos.at(rp), Alumnos.at(j));
+            std::swap(Alumnos.at(rp), Alumnos.at(j));
         }
     }
     //dejamos el pivote en la posicion correcta
-    swap(Alumnos.at(rp-1), Alumnos.at(l));
+    std::swap(Alumnos.at(rp-1), Alumnos.at(l));
     return rp-1;
 }
 
 //calcula la mediana aproximada del intervalo
-int median_aprox(vector<Alum> &Alumnos, const int l, int r) {
+int median_aprox(std::vector<Alum> &Alumnos, const int l, int r) {
     int m = l + (r-l)/2;
     Alum tmp;
 
@@ -205,7 +204,7 @@ int median_aprox(vector<Alum> &Alumnos, const int l, int r) {
     return Alumnos.at(l).id;
 }
 
-int binarySearchId(vector<Alum> &Alumnos, const int x) {
+int binarySearchId(std::vector<Alum> &Alumnos, const int x) {
     int l = 0, r = (int)Alumnos.size()-1;
 
     while (l <= r) {
@@ -226,7 +225,7 @@ int binarySearchId(vector<Alum> &Alumnos, const int x) {
     return -1;
 }
 
-void insertionSortNombre(vector<Alum> &Alumnos) {
+void insertionSortNombre(std::vector<Alum> &Alumnos) {
     int j;
     Alum key;
     
@@ -234,7 +233,7 @@ void insertionSortNombre(vector<Alum> &Alumnos) {
         key = Alumnos.at(i);
         j = i-1;
 
-        while (j>=0 && string(Alumnos.at(j).nombres) > string(key.nombres)) {
+        while (j>=0 && std::string(Alumnos.at(j).nombres) > std::string(key.nombres)) {
             Alumnos.at(j+1) = Alumnos.at(j);
             j = j-1;
         }
@@ -242,16 +241,16 @@ void insertionSortNombre(vector<Alum> &Alumnos) {
     }
 }
 
-int binarySearchNombre(vector<Alum> &Alumnos, const string s) {
+int binarySearchNombre(std::vector<Alum> &Alumnos, const std::string s) {
     int l = 0, r = (int)Alumnos.size()-1;
 
     while (l<=r) {
         int m = l + (r-l)/2;
 
-        if (string(Alumnos.at(m).nombres) == s)
+        if (std::string(Alumnos.at(m).nombres) == s)
             return m;
 
-        if (s > string(Alumnos.at(m).nombres))
+        if (s > std::string(Alumnos.at(m).nombres))
             l = m+1;
         else
             r = m-1;

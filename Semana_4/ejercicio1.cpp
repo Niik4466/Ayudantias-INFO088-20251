@@ -6,9 +6,9 @@
     que retorne si la palabra1 > palabra2 en orden lexicografico.
     Consideren que en caso de ser iguales si la palabra1 tiene mas caracteres que palabra2 entonces retorna true, false si no.
 */
-#inlcude <string>
+#include <string>
 
-bool is_bigger_than_word(string palabra1, string palabra2);
+bool is_bigger_than_word(std::string palabra1, std::string palabra2);
 
 int main(int argc, char** argv) {
     

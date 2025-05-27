@@ -12,10 +12,9 @@ es decir, el indice arrojado por partition, es el p elemento menor.
 
 #include <vector>
 #include <random>
-using namespace std;
 
-int quickSelect(vector<int> &A, const int l, const int r, const int k);
-int partition(vector<int> &A, const int l, const int r);
+int quickSelect(std::vector<int> &A, const int l, const int r, const int k);
+int partition(std::vector<int> &A, const int l, const int r);
 
 #define MIN 10
 #define MAX 100
@@ -26,10 +25,10 @@ int main(int argc, char **argv){
     return EXIT_SUCCESS;
 }
 
-int quickSelect(vector<int> &A, const int l, const int r, const int k) {
+int quickSelect(std::vector<int> &A, const int l, const int r, const int k) {
     return 0;
 }
 
-int partition(vector<int> &A, const int l, const int r) {
+int partition(std::vector<int> &A, const int l, const int r) {
     return 0;
 }

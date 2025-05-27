@@ -1,11 +1,10 @@
 #include <iostream>
 #include <vector>
-using namespace std;
 
 #define TEST 0
 
-void badPractice(vector<int> Vec);
-void goodPractice(vector<int> &Vec);
+void badPractice(std::vector<int> Vec);
+void goodPractice(std::vector<int> &Vec);
 
 // Declaracion de la funcion intercambiar utilizando punteros
 void intercambiarConPunteros(int* a, int* b);
@@ -13,7 +12,7 @@ void intercambiarConPunteros(int* a, int* b);
 // Declaracion de la funcion intercambiar utilizando referencias
 void intercambiarConReferencias(int& a, int &b);
 
-int main(){
+int main() {
   int i = 4;            // Declaracion de una variable de tipo int + instruccion de asignacion
   int* ptr;             // Declaracion de un puntero a un int
   int& ref = i;         // Declaracion de una referencia + instruccion de asignacion
@@ -28,36 +27,36 @@ int main(){
 
 
   // Como se ven estos valores?
-  cout << "Variable i \t" << i << "\t\t referencia a la variable i " << &i << endl;
-  cout << "Puntero ptr \t" << ptr << "\t valor al que apunta el puntero ptr " << *ptr << endl;
-  cout << "Referencia ref \t" << ref << "\t\t referencia de la referencia ref " << &ref << endl;
+  std::cout << "Variable i \t" << i << "\t\t referencia a la variable i " << &i << std::endl;
+  std::cout << "Puntero ptr \t" << ptr << "\t valor al que apunta el puntero ptr " << *ptr << std::endl;
+  std::cout << "Referencia ref \t" << ref << "\t\t referencia de la referencia ref " << &ref << std::endl;
 
-  if (TEST == 1){
-    vector<int> vec(1048576, 0);
+  if(TEST == 1) {
+    std::vector<int> vec(1048576, 0);
     badPractice(vec);
   }
 
-  cout << "####------------------------------------------####" << endl;
+  std::cout << "####------------------------------------------####" << std::endl;
 
   int a = 5;
   int b = 0;
 
-  cout << "Valores iniciales: " << endl << "a = " << a << endl << "b = " << b << endl << endl;
+  std::cout << "Valores iniciales: " << std::endl << "a = " << a << std::endl << "b = " << b << std::endl << std::endl;
 
   intercambiarConPunteros(&a, &b);
 
-  cout << "Valores luego de intercambiar con punteros " << endl << "a = " << a << endl << "b = " << b << endl << endl;
+  std::cout << "Valores luego de intercambiar con punteros " << std::endl << "a = " << a << std::endl << "b = " << b << std::endl << std::endl;
 
   intercambiarConReferencias(a, b);
 
-  cout << "Valores luego de intercambiar con referencias " << endl << "a = " << a << endl << "b = " << b << endl;
+  std::cout << "Valores luego de intercambiar con referencias " << std::endl << "a = " << a << std::endl << "b = " << b << std::endl;
 
 
   return 0;
 }
 
 // funcion intercambiar utilizando punteros
-void intercambiarConPunteros(int* a, int* b){
+void intercambiarConPunteros(int* a, int* b) {
   // Guardamos el elemento apuntado por a en la variable temp
   int temp = *a;
   // Hacemos que el elemento apuntado por a, ahora sea el elemento apuntado por b
@@ -67,16 +66,16 @@ void intercambiarConPunteros(int* a, int* b){
 }
 
 // funcion intercambiar utilizando referencias
-void intercambiarConReferencias(int& a, int &b){
+void intercambiarConReferencias(int& a, int &b) {
   int temp = a;
   a = b;
   b = temp;
 }
 
-void badPractice(vector<int> Vec){
-  badPractice(Vec);
+void badPractice(std::vector<int> Vec) {
+  return; // Esta funcion no hace nada, pero es un ejemplo de mala practica
 }
 
-void goodPractice(vector<int> &Vec){
-  goodPractice(Vec);
+void goodPractice(std::vector<int> &Vec) {
+  return; // Esta funcion no hace nada, pero es un ejemplo de buena practica
 }

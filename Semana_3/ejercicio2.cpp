@@ -7,12 +7,11 @@
 
 #include <iostream>
 #include <vector>
-using namespace std;
 
 #define TEST 0
 
-void badPractice(vector<int> Vec);
-void goodPractice(vector<int> &Vec);
+void badPractice(std::vector<int> Vec);
+void goodPractice(std::vector<int> &Vec);
 
 int main(){
   int i = 4;            // Declaracion de una variable de tipo int + instruccion de asignacion
@@ -29,12 +28,12 @@ int main(){
 
 
   // Como se ven estos valores?
-  cout << "Variable i \t" << i << "\t\t referencia a la variable i " << &i << endl;
-  cout << "Puntero ptr \t" << ptr << "\t valor al que apunta el puntero ptr " << *ptr << endl;
-  cout << "Referencia ref \t" << ref << "\t\t referencia de la referencia ref " << &ref << endl;
+  std::cout << "Variable i \t" << i << "\t\t referencia a la variable i " << &i << std::endl;
+  std::cout << "Puntero ptr \t" << ptr << "\t valor al que apunta el puntero ptr " << *ptr << std::endl;
+  std::cout << "Referencia ref \t" << ref << "\t\t referencia de la referencia ref " << &ref << std::endl;
 
   if (TEST == 1){
-    vector<int> vec(1048576, 0);
+    std::vector<int> vec(1048576, 0);
     badPractice(vec);
   }
 
@@ -43,10 +42,10 @@ int main(){
   return 0;
 }
 
-void badPractice(vector<int> Vec){
-  badPractice(Vec);
+void badPractice(std::vector<int> Vec){
+  return; // No hace nada, pero es un ejemplo de mala practica
 }
 
-void goodPractice(vector<int> &Vec){
-  goodPractice(Vec);
+void goodPractice(std::vector<int> &Vec){
+  return; // No hace nada, pero es un ejemplo de buena practica
 }

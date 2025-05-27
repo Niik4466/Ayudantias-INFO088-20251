@@ -28,7 +28,6 @@ busque un nombre en el arreglo.
 #include <random>
 #include <vector>
 #include <array>
-using namespace std;
 
 #define N_CAR 3
 #define N_NOM 5
@@ -36,9 +35,9 @@ using namespace std;
 #define MIN_EDAD 17
 #define MAX_EDAD 49
 
-const array<char[10], N_NOM>  ellos = {"Pedro", "Juan", "Manuel", "Diego", "Agustin"};
-const array<char[10], N_NOM> ellas = {"Maria", "Claudia", "Josefina", "Paola", "Linda"};
-const array<char[10], N_APEL> apel = {"Torres", "Flores", "Campos", "Acosta", "Aguirre", "Molina", "Silva", "Rojas", "Rios", "Castillo"};
+const std::array<char[10], N_NOM>  ellos = {"Pedro", "Juan", "Manuel", "Diego", "Agustin"};
+const std::array<char[10], N_NOM> ellas = {"Maria", "Claudia", "Josefina", "Paola", "Linda"};
+const std::array<char[10], N_APEL> apel = {"Torres", "Flores", "Campos", "Acosta", "Aguirre", "Molina", "Silva", "Rojas", "Rios", "Castillo"};
 
 struct {
    char id;
@@ -54,13 +53,13 @@ struct Alum{
 	int edad;		// IN [MIN_EDAD..MAX_EDAD]
 };
 
-void genAlumnos(vector<Alum> &Alumnos);
-void print_alumnos(vector<Alum> &Alumnos);
-void quickSortId(vector<Alum> &Alumnos, const int l, const int r);
-int partitionId(vector<Alum> &Alumnos, const int l ,const int r);
-int binarySearchId(vector<Alum> &Alumnos, const int x);
-void insertionSortNombre(vector<Alum> &Alumnos);
-int binarySearchNombre(vector<Alum> &Alumnos, const char c[21]);
+void genAlumnos(std::vector<Alum> &Alumnos);
+void print_alumnos(std::vector<Alum> &Alumnos);
+void quickSortId(std::vector<Alum> &Alumnos, const int l, const int r);
+int partitionId(std::vector<Alum> &Alumnos, const int l ,const int r);
+int binarySearchId(std::vector<Alum> &Alumnos, const int x);
+void insertionSortNombre(std::vector<Alum> &Alumnos);
+int binarySearchNombre(std::vector<Alum> &Alumnos, const char c[21]);
 
 // A esta definición del main(), se le pueden pasar argumentos
 int main(int argc, char **argv) {
@@ -70,7 +69,7 @@ int main(int argc, char **argv) {
 	}
 
     const int n=atoi(argv[1]);
-	vector<Alum> Alumnos(n);	// ESTO ES MEMORIA DINAMICA --> no sabe el compilador cuantos bytes son
+	std::vector<Alum> Alumnos(n);	// ESTO ES MEMORIA DINAMICA --> no sabe el compilador cuantos bytes son
 
 	genAlumnos(Alumnos);
 
@@ -80,7 +79,7 @@ int main(int argc, char **argv) {
 }
 
 // generar n alumnos con dos nombres y 2 apellidos aleatorios desde los arreglos globales
-void genAlumnos(vector<Alum> &Alumnos) {
+void genAlumnos(std::vector<Alum> &Alumnos) {
 	int i, a, b;
 
 	for(i=0; i<(int)Alumnos.size(); ++i){
@@ -112,7 +111,7 @@ void genAlumnos(vector<Alum> &Alumnos) {
 	}
 }
 
-void print_alumnos(vector<Alum> &Alumnos) {
+void print_alumnos(std::vector<Alum> &Alumnos) {
     printf("Lista de Alumnos:\n");
 	for (Alum &alumno : Alumnos){
 		printf("Id        : %d\n", alumno.id);
@@ -143,22 +142,22 @@ void print_alumnos(vector<Alum> &Alumnos) {
 	}
 }
 
-void quickSortId(vector<Alum> &Alumnos, const int l, const int r) {
+void quickSortId(std::vector<Alum> &Alumnos, const int l, const int r) {
 
 }
 
-int partitionId(vector<Alum> &Alumnos, const int l ,const int r) {
+int partitionId(std::vector<Alum> &Alumnos, const int l ,const int r) {
     return 0;
 }
 
-int binarySearchId(vector<Alum> &Alumnos, const int x) {
+int binarySearchId(std::vector<Alum> &Alumnos, const int x) {
     return 0;
 }
 
-void insertionSortNombre(vector<Alum> &Alumnos) {
+void insertionSortNombre(std::vector<Alum> &Alumnos) {
 
 }
 
-int binarySearchNombre(vector<Alum> &Alumnos, const char c[21]) {
+int binarySearchNombre(std::vector<Alum> &Alumnos, const char c[21]) {
     return 0;
 }

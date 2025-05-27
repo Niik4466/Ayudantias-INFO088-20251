@@ -1,5 +1,4 @@
 #include <random>
-using namespace std;
 
 #define MIN 97  // valor mínimo que pueden tomar los carácteres
 #define MAX 123 // valor máximo que pueden tomar los carácteres
