@@ -22,6 +22,4 @@ all: $(EXECUTABLES)
 
 # Limpiar los binarios generados
 clean:
-	rm -rf $(EXECUTABLES) $(PILA)
-
-
+	rm -rf $(EXECUTABLES)
