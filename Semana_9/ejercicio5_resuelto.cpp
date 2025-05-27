@@ -2,7 +2,6 @@
 #include <algorithm>
 #include <vector>
 #include <stack>
-using namespace std;
 
 struct actividad{
     uint id;
@@ -12,15 +11,15 @@ struct actividad{
     short int min_fin;
 };
 
-void llenaActividades(vector<actividad> &actividades);
-void printAct(vector<actividad> &actividades);
-void ordenaAct(vector<actividad> &actividades, uint l, uint r);
-uint llenaStackAct(vector<actividad> actividades, stack<actividad> &planificacion);
+void llenaActividades(std::vector<actividad> &actividades);
+void printAct(std::vector<actividad> &actividades);
+void ordenaAct(std::vector<actividad> &actividades, uint l, uint r);
+uint llenaStackAct(std::vector<actividad> actividades, std::stack<actividad> &planificacion);
 
-void llenaActividadesAleatorio(vector<actividad> &actividades, uint n);
+void llenaActividadesAleatorio(std::vector<actividad> &actividades, uint n);
 
 int main() {
-    vector<actividad> actividades(10);
+    std::vector<actividad> actividades(10);
     llenaActividades(actividades);
     printAct(actividades);
 
@@ -28,7 +27,7 @@ int main() {
     ordenaAct(actividades, 0, static_cast<uint>(actividades.size()-1));
     printAct(actividades);
 
-    stack<actividad> planificacion;
+    std::stack<actividad> planificacion;
     printf("John podra asistir a %i actividades\n", llenaStackAct(actividades, planificacion));
     while(!planificacion.empty()) {
         actividad temp = planificacion.top();
@@ -41,7 +40,7 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-int partition(vector<actividad> &actividades, uint l, uint r)
+int partition(std::vector<actividad> &actividades, uint l, uint r)
 {
 	int p = l;
     actividad pv = actividades.at(p);
@@ -51,14 +50,14 @@ int partition(vector<actividad> &actividades, uint l, uint r)
 		if(actividades.at(i).hora_fin == pv.hora_fin ? actividades.at(i).min_fin < pv.min_fin : actividades.at(i).hora_fin < pv.hora_fin) //cambiamos la condicion de comparacion
 		{
 			p++;
-			swap(actividades.at(i),actividades.at(p));
+			std::swap(actividades.at(i),actividades.at(p));
 		}
 	}
-	swap(actividades.at(l),actividades.at(p));
+	std::swap(actividades.at(l),actividades.at(p));
 	return p;
 }
 
-void ordenaAct(vector<actividad> &actividades, uint l, uint r) {
+void ordenaAct(std::vector<actividad> &actividades, uint l, uint r) {
     if(l<r)
 	{
 		int p = partition(actividades , l, r);
@@ -67,13 +66,13 @@ void ordenaAct(vector<actividad> &actividades, uint l, uint r) {
 	}
 }
 
-void ordenaActLambda(vector<actividad> &actividades) { //Variacion usando sort de la stl y una funcion lambda para definir la condicion de ordenamiento
+void ordenaActLambda(std::vector<actividad> &actividades) { //Variacion usando sort de la stl y una funcion lambda para definir la condicion de ordenamiento
     sort(actividades.begin(), actividades.end(), [](actividad a, actividad b) -> bool {
             return (a.hora_fin == b.hora_fin ? a.min_fin < b.min_fin : a.hora_fin < b.hora_fin);
         });
 }
 
-uint llenaStackAct(vector<actividad> actividades, stack<actividad> &planificacion) {
+uint llenaStackAct(std::vector<actividad> actividades, std::stack<actividad> &planificacion) {
     uint n = static_cast<uint>(actividades.size())-1;
     planificacion.push(actividades.at(0));
     for(uint i=1;i<=n;++i)
@@ -83,7 +82,7 @@ uint llenaStackAct(vector<actividad> actividades, stack<actividad> &planificacio
     return static_cast<uint>(planificacion.size());
 }
 
-void llenaActividades(vector<actividad> &actividades) {
+void llenaActividades(std::vector<actividad> &actividades) {
     actividades.at(0) = {1, 9, 0, 10, 30};
     actividades.at(1) = {2, 10, 45, 12, 0};
     actividades.at(2) = {3, 13, 15, 14, 0};
@@ -96,7 +95,7 @@ void llenaActividades(vector<actividad> &actividades) {
     actividades.at(9) = {10, 19, 0, 20, 30};
 }
 
-void printAct(vector<actividad> &actividades) {
+void printAct(std::vector<actividad> &actividades) {
     for (actividad act : actividades) {
         printf("\nActividad: %i,\thora de inicio: %i:%i,\thora de finalización: %i:%i\n", 
                 act.id, act.hora_ini, act.min_ini, act.hora_fin, act.min_fin);
@@ -104,7 +103,7 @@ void printAct(vector<actividad> &actividades) {
     printf("\n");
 }
 
-void llenaActividadesAleatorio(vector<actividad> &actividades, uint n) {
+void llenaActividadesAleatorio(std::vector<actividad> &actividades, uint n) {
     actividad rand_act;
     for(uint i=0;i<n;++i) {
         do{

@@ -1,25 +1,24 @@
 #include <iostream>
 #include <stack>
 #include <random>
-using namespace std;
 
 #define MIN 10
 #define MAX 100
 
-int kMenor(stack<int> miPila, const int k);
-void printPila(const stack<int> miPila);
+int kMenor(std::stack<int> miPila, const int k);
+void printPila(const std::stack<int> miPila);
 
 int main() {
-    stack<int> miPila;
+    std::stack<int> miPila;
 
     int n,k;
     n=k=0;
 
     do{
-        cout << "Ingrese n>0: "; cin >> n;
+        std::cout << "Ingrese n>0: "; std::cin >> n;
     } while(n<=0);
     do{
-        cout << "Ingrese k<n: "; cin >> k;
+        std::cout << "Ingrese k<n: "; std::cin >> k;
     } while(k >= n);
 
     for (int i = 0; i < n; ++i){
@@ -34,8 +33,8 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-int kMenor(stack<int> miPila, const int k) {
-    stack<int> pilaAux;
+int kMenor(std::stack<int> miPila, const int k) {
+    std::stack<int> pilaAux;
     int min = -1;
     for (int i = 0; i < k; ++i){ //haremos el proceso de encontrar el minimo k veces
         min = miPila.top();      //el minimo será el tope de la pila miPila
@@ -54,7 +53,7 @@ int kMenor(stack<int> miPila, const int k) {
     return min;
 }
 
-void printPila(stack<int> miPila){
+void printPila(std::stack<int> miPila){
     while (!miPila.empty()){
         printf("%i ", miPila.top());
         miPila.pop();

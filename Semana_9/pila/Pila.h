@@ -2,7 +2,6 @@
 #define Pila_H
 
 #include <ios>
-using namespace std;
 
 class Pila{
 

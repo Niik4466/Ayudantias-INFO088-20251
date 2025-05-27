@@ -1,8 +1,7 @@
 #include "pila/Pila.h"
-using namespace std;
 
-bool esCorrecto(string &palabra);
-void llenarPila(Pila &miPila, const string &palabra);
+bool esCorrecto(std::string &palabra);
+void llenarPila(Pila &miPila, const std::string &palabra);
 
 int main(int argc, char** argv) {
     if (argc != 2){
@@ -10,7 +9,7 @@ int main(int argc, char** argv) {
         exit(EXIT_FAILURE);
     }
 
-    string palabra = argv[1];
+    std::string palabra = argv[1];
 
     printf("%s\n", palabra.c_str());
 
@@ -24,7 +23,7 @@ int main(int argc, char** argv) {
     return EXIT_SUCCESS;
 }
 
-bool esCorrecto(string &palabra) {
+bool esCorrecto(std::string &palabra) {
     Pila miPila;
     char c;
     int c_in_palarabra, pos;
@@ -67,8 +66,8 @@ bool esCorrecto(string &palabra) {
         return 0;
 }
 
-void llenarPila(Pila &miPila, const string &palabra) {
-    string cierra_parentesis = ")]}";
+void llenarPila(Pila &miPila, const std::string &palabra) {
+    std::string cierra_parentesis = ")]}";
     for(char c : palabra) {
         if ((int)cierra_parentesis.find(c)==-1) { //si no es simbolo de cierre lo agrega a la pila
             miPila.push(c);

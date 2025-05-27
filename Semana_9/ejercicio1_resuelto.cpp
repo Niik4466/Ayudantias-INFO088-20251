@@ -1,13 +1,13 @@
 #include "pila/Pila.h"
 
-bool esPalindrome(const string &palabra);
+bool esPalindrome(const std::string &palabra);
 
 int main(int argc, char** argv) {
     if (argc != 2){
         printf("Debe ejecutarse como ./prog2 palabra\n");
         exit(EXIT_FAILURE);
     }
-    string palabra = argv[1];
+    std::string palabra = argv[1];
 
     if (esPalindrome(palabra))
         printf("La palabra es palindrome!!\n");
@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 
 }
 
-bool esPalindrome(const string &palabra) {
+bool esPalindrome(const std::string &palabra) {
     //generamos la pila
     Pila miPila;
     for(char c : palabra) {

@@ -1,11 +1,10 @@
 #include <ios>
 #include <stack>
-using namespace std;
 
-bool isEmpty(const stack<int> &cola);
-void enqueue(stack<int> &cola, const int valor);
-int dequeue(stack<int> &cola);
-int front(const stack<int> &cola);
+bool isEmpty(const std::stack<int> &cola);
+void enqueue(std::stack<int> &cola, const int valor);
+int dequeue(std::stack<int> &cola);
+int front(const std::stack<int> &cola);
 
 int main() {
     //podemos comprobar que es una cola con el siguiente ejemplo:
@@ -14,13 +13,13 @@ int main() {
     //si fuera una cola, entonces por LIFO debería imprimirse 123456
 
     printf("Creando la Pila...\n");
-    stack<int> prueba;
+    std::stack<int> prueba;
     for (int i = 1; i < 7; ++i)
         prueba.push(i);
     printf("Listo!!!\n\n");
 
     printf("Creando la Cola...\n");
-    stack<int> cola;
+    std::stack<int> cola;
     for (int i = 1; i < 7; ++i){
         enqueue(cola, i);
     }
@@ -37,18 +36,18 @@ int main() {
 }
 
 //retorna true si la "cola" está vacía, false si no
-bool isEmpty(const stack<int> &cola) {
+bool isEmpty(const std::stack<int> &cola) {
     return (cola.empty());
 }
 
 //ingresa un nuevo valor a la "cola"
-void enqueue(stack<int> &cola, const int valor) {
+void enqueue(std::stack<int> &cola, const int valor) {
     if (cola.empty()){ //si la cola no tiene elementos agregamos uno
         cola.push(valor);
         return;
     }
     //si tiene elementos entonces...
-    stack<int> aux;
+    std::stack<int> aux;
     while(!cola.empty()){ //damos vuelta la pila llamada "cola" usando una pila "aux"
         aux.push(cola.top());
         cola.pop();
@@ -62,7 +61,7 @@ void enqueue(stack<int> &cola, const int valor) {
 }
 
 //elimina un valor de la "cola"
-int dequeue(stack<int> &cola) {
+int dequeue(std::stack<int> &cola) {
     if (cola.empty()) return -1;
     int valor = cola.top();
     cola.pop();
@@ -70,7 +69,7 @@ int dequeue(stack<int> &cola) {
 }
 
 //retorna el valor al frente de la "cola"
-int front(const stack<int> &cola) {
+int front(const std::stack<int> &cola) {
     if (cola.empty()) return -1;
     return cola.top();
 }
