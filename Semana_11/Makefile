@@ -28,6 +28,5 @@ pila/Pila.o: pila/Pila.cpp
 
 # Limpiar los binarios generados
 clean:
+	@echo " [CLN] Removing binary files"
 	rm -rf $(EXECUTABLES) $(AVL)
-
-

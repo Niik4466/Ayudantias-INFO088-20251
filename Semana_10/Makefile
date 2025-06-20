@@ -22,4 +22,5 @@ all: $(EXECUTABLES)
 
 # Limpiar los binarios generados
 clean:
+	@echo " [CLN] Removing binary files"
 	rm -rf $(EXECUTABLES)
